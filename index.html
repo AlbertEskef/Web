@@ -86,14 +86,23 @@
       '🎯 Styling with CSS',
       '🧱 Structuring the web using HTML'
     ];
+  
+    const delay = 5000; // 5 seconds per message
     let index = 0;
-    setInterval(() => {
+  
+    const showNext = () => {
+      if (index >= messages.length) return;
+  
       terminal.classList.remove('typewriter');
       void terminal.offsetWidth;
-      terminal.textContent = messages[index % messages.length];
+      terminal.textContent = messages[index];
       terminal.classList.add('typewriter');
+  
       index++;
-    }, 5000);
+      setTimeout(showNext, delay);
+    };
+  
+    showNext();
   </script>
 </body>
 </html>
