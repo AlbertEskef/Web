@@ -87,22 +87,21 @@
       '🧱 Structuring the web using HTML'
     ];
   
-    const delay = 5000; // 5 seconds per message
     let index = 0;
+    const delay = 3000;
   
     const showNext = () => {
-      if (index >= messages.length) return;
-  
       terminal.classList.remove('typewriter');
       void terminal.offsetWidth;
       terminal.textContent = messages[index];
       terminal.classList.add('typewriter');
-  
-      index++;
-      setTimeout(showNext, delay);
+      index = (index + 1) % messages.length; // loops forever
     };
   
-    showNext();
+    window.addEventListener('load', () => {
+      showNext();
+      setInterval(showNext, delay);
+    });
   </script>
 </body>
 </html>
